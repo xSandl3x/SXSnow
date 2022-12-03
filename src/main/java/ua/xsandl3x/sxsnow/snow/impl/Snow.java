@@ -30,7 +30,7 @@ public class Snow extends AbstractSnow {
             double y = RandomUtil.randDouble(0.0, this.radius * 2);
             double z = RandomUtil.randDouble(-this.radius, this.radius);
 
-            List<Particle> particles = Arrays.asList(Particle.FIREWORKS_SPARK, Particle.END_ROD, Particle.CLOUD);
+            List<Particle> particles = Arrays.asList(Particle.FIREWORKS_SPARK, Particle.END_ROD);
 
             Location playerLocation = player.getLocation();
             Location location = playerLocation.clone().add(x, y, z);

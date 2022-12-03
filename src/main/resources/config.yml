@@ -16,9 +16,9 @@ Snow:
     rain-forever: true
 
 # Section "Settings" it includes different options.
-# Carefully adjust the settings below as high values can cause lag.
+# Amount & radius: Carefully adjust the settings below as high values can cause lag.
 Settings:
-  interval: 15 # The interval of new snow particles should spawn around the players. (20 ticks = 1 sec)
+  interval: 10 # The interval of new snow particles should spawn around the players. (20 ticks = 1 sec)
   radius: 25.0 # The radius that is involved in the calculation of the location of the appearance of particles.
   amount: 150 # The count of particles around a player.
 
