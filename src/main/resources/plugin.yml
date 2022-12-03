@@ -1,0 +1,5 @@
+name: ${project.name}
+version: ${project.version}
+main: ua.xsandl3x.sxsnow.Main
+authors: [ xSandl3x ]
+description: ${project.description}
