@@ -12,4 +12,4 @@ This plugin adds artificial snow.
 - List of worlds
 
 # ❓ Errors and Suggestions
-- You can submit a bug or suggestion here: https://github.com/xSandlex/SXSnow/issues/new
+- You can submit a bug or suggestion here: https://github.com/xSandl3x/SXSnow/issues/new
