@@ -9,6 +9,9 @@ This plugin adds artificial snow.
 - Configurable amount
 - Configurable interval
 - Auto update checker
+- MySQL
+- SQLite
+- Commands
 - List of worlds
 
 # ❓ Errors and Suggestions
