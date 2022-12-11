@@ -6,17 +6,15 @@ import org.bukkit.entity.Player;
 import ua.xsandl3x.sxsnow.Main;
 import ua.xsandl3x.sxsnow.snow.AbstractSnow;
 import ua.xsandl3x.sxsnow.utils.RandomUtil;
-
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @FieldDefaults(makeFinal = true)
 public class Snow extends AbstractSnow {
 
-    private double radius;
     private int amount;
+    private double radius;
 
-    public Snow(Main instance, long interval, List<String> enabledWorlds, double radius, int amount) {
+    public Snow(Main instance, List<String> enabledWorlds, long interval, double radius, int amount) {
         super(instance, interval, enabledWorlds);
 
         this.radius = radius;

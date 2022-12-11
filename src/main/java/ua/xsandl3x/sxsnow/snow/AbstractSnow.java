@@ -6,20 +6,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import ua.xsandl3x.sxsnow.Main;
-import ua.xsandl3x.sxsnow.interfaces.ILoadable;
-import ua.xsandl3x.sxsnow.interfaces.IUnloadable;
-
-import java.util.List;
-import java.util.Objects;
+import ua.xsandl3x.sxsnow.interfaces.*;
+import ua.xsandl3x.sxsnow.player.SnowPlayer;
+import ua.xsandl3x.sxsnow.utils.Utils;
+import java.util.*;
+import java.util.logging.Level;
 
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true)
 public abstract class AbstractSnow implements ILoadable, IUnloadable {
 
     private Main instance;
-
     @NonFinal
-    private BukkitTask taskId;
+    private BukkitTask task;
+
     private long interval;
 
     private List<String> enabledWorlds;
@@ -30,16 +30,24 @@ public abstract class AbstractSnow implements ILoadable, IUnloadable {
         if (this.interval <= 0 || this.enabledWorlds.isEmpty())
             return;
 
-        this.taskId = Bukkit.getScheduler().runTaskTimer(this.instance, () ->
+        this.task = Bukkit.getScheduler().runTaskTimer(this.instance, () ->
                 Bukkit.getOnlinePlayers().stream()
-                        .filter(player -> this.enabledWorlds.contains(player.getWorld().getName()))
+                        .filter(player -> SnowPlayer.of(player).isEnableSnow() && this.playerRequiredWorld(player))
                         .forEach(this::spawn), this.interval * 3, this.interval);
     }
 
     @Override
     public void unload() {
-        Objects.requireNonNull(this.taskId, "SnowTask is not initialized so it cannot be cancelled.");
-        this.taskId.cancel();
+        try {
+            this.task.cancel();
+        }
+        catch(Exception ex) {
+            Utils.sendLog(Level.WARNING, "SnowTask is not initialized so it cannot be cancelled.");
+        }
+    }
+
+    private boolean playerRequiredWorld(Player player) {
+        return this.enabledWorlds.contains(player.getWorld().getName());
     }
 
     protected abstract void spawn(Player player);

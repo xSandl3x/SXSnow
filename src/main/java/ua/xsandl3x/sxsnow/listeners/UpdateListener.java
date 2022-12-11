@@ -18,10 +18,10 @@ public final class UpdateListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String coloredMessage = Utils.toColor(snowConfig.getPrefix() + snowConfig.getUpdate());
 
         if (player.isOp() && snowConfig.isCheckUpdate() && instance.getUpdateCheck().isUpdateFound()) {
-            player.sendMessage(coloredMessage);
+            Utils.sendMessage(player, snowConfig.getUpdate()
+                    .replace("%prefix", snowConfig.getPrefix()));
         }
     }
 }

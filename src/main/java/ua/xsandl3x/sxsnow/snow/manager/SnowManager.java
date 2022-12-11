@@ -3,6 +3,7 @@ package ua.xsandl3x.sxsnow.snow.manager;
 import lombok.*;
 import lombok.experimental.*;
 import ua.xsandl3x.sxsnow.Main;
+import ua.xsandl3x.sxsnow.cache.Cache;
 import ua.xsandl3x.sxsnow.configuration.impl.SnowConfig;
 import ua.xsandl3x.sxsnow.interfaces.*;
 import ua.xsandl3x.sxsnow.snow.impl.Snow;
@@ -30,8 +31,8 @@ public class SnowManager implements ILoadable, IUnloadable {
             return;
 
         this.snow = new Snow(this.instance,
-                snowConfig.getInterval(),
                 snowConfig.getEnabledWorlds(),
+                snowConfig.getInterval(),
                 snowConfig.getRadius(),
                 snowConfig.getAmount());
 
@@ -40,6 +41,7 @@ public class SnowManager implements ILoadable, IUnloadable {
 
     @Override
     public void unload() {
+        Cache.getCachedData().clearCacheData();
         this.snow.unload();
     }
 }

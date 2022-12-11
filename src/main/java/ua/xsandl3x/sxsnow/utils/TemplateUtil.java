@@ -11,7 +11,7 @@ public class TemplateUtil {
     private final PluginDescriptionFile description = Main.getInstance().getDescription();
 
     public void pluginStartMessage() {
-        String lastModified = "01.12.2022";
+        String lastModified = "10.12.2022";
         String authors = String.join(", ", description.getAuthors());
 
             Utils.sendLog(Level.INFO, new String[] {

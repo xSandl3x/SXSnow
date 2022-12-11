@@ -40,8 +40,8 @@ public class UpdateCheck {
                         this.updateFound = true;
                     }
                 }
-            } catch (IOException exception) {
-                Utils.sendLog(Level.SEVERE, "&4Failed to check for update!");
+            } catch (IOException ex) {
+                Utils.sendLog(Level.SEVERE, "&4Update search error: %s", ex.getMessage());
             }
         });
     }

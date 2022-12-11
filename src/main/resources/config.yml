@@ -5,15 +5,39 @@
 #                                                                         #
 ###########################################################################
 
+#
+# Permissions:
+# sxsnow.toggle - /sxsnow toggle
+# sxsnow.help - /sxsnow help
+#
+
+# Settings for snow storage.
+# There are two types of storage:
+# -> SQLite - suitable for small projects.
+# -> MySQL - recommended for projects that have proxies and synchronized servers.
+sql:
+  type: SQLite # SQLite or MySQL
+  data:
+    host: localhost
+    port: 3306
+    database: SnowData
+    username: root
+    password: 'snow123'
+
+
+# Check for updates if set to true.
+Check-update:
+  enable: true
+
 # Place all worlds where snow should work.
 Enabled-worlds:
   - 'world'
 
-# Section "Snow" where you can turn snow and rain on/off.
+# Section "Snow", where you can enable/disable snow and its auxiliary mechanics
 Snow:
-  enable: true
+  enable: true # Just enable/disable snow.
   disable:
-    rain-forever: true
+    rain-forever: true # This feature disables rain permanently.
 
 # Section "Settings" it includes different options.
 # Amount & radius: Carefully adjust the settings below as high values can cause lag.
@@ -25,4 +49,15 @@ Settings:
 # Plugin messages.
 Messages:
   prefix: "&eSXSnow &8| "
-  update-found: "&6A new plugin update available!"
+  update-found: "%prefix&6A new plugin update available!"
+  no-perms: "%prefix&cYou don't have enough permissions!"
+  snow-player-action: "%prefix&fYou %action &fsnow for yourself."
+  invalid-arg: "%prefix&cInvalid arguments. Use &e/snow help"
+  help-page:
+    - ""
+    - "&8| &e/sxsnow toggle &f- Allows the player to turn snow on/off."
+    - "&8| &e/sxsnow help &f- This page."
+    - ""
+  action:
+    enabled: "&aenabled"
+    disabled: "&cdisabled"

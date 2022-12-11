@@ -1,7 +1,6 @@
 package ua.xsandl3x.sxsnow.utils;
 
 import lombok.experimental.UtilityClass;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 @UtilityClass

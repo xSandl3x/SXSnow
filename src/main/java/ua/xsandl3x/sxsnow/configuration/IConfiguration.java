@@ -7,8 +7,6 @@ public interface IConfiguration extends ILoadable {
 
     FileConfiguration getFile();
 
-    void reload();
-
     void save();
 
 }
